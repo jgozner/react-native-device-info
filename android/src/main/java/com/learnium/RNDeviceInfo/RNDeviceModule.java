@@ -927,7 +927,7 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod 
-  public void isPhoneAccountEnabled(Promise p){p.resolve(isPhoneAccountEnabledSync())}
+  public void isPhoneAccountEnabled(Promise p){ p.resolve(isPhoneAccountEnabledSync()); }
 
   @ReactMethod(isBlockingSynchronousMethod = true)
   public WritableArray getSupportedAbisSync() {
