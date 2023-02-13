@@ -148,6 +148,7 @@ export default class App extends Component {
     deviceJSON.IpAddress = DeviceInfo.getIpAddressSync();
     deviceJSON.MacAddress = DeviceInfo.getMacAddressSync(); // needs android.permission.ACCESS_WIFI_STATE
     deviceJSON.phoneNumber = DeviceInfo.getPhoneNumberSync(); // needs android.permission.READ_PHONE_STATE
+    deviceJSON.isPhoneAccountEnabled = DeviceInfo.isPhoneAccountEnabledSync(); // needs android.permission.READ_PHONE_STATE
     deviceJSON.ApiLevel = DeviceInfo.getApiLevelSync();
     deviceJSON.carrier = DeviceInfo.getCarrierSync();
     deviceJSON.totalMemory = DeviceInfo.getTotalMemorySync();
@@ -221,6 +222,7 @@ export default class App extends Component {
       deviceJSON.IpAddress = await DeviceInfo.getIpAddress();
       deviceJSON.MacAddress = await DeviceInfo.getMacAddress(); // needs android.permission.ACCESS_WIFI_STATE
       deviceJSON.phoneNumber = await DeviceInfo.getPhoneNumber(); // needs android.permission.READ_PHONE_STATE
+      deviceJSON.isPhoneAccountEnabled = await DeviceInfo.isPhoneAccountEnabled(); // needs android.permission.READ_PHONE_STATE
       deviceJSON.ApiLevel = await DeviceInfo.getApiLevel();
       deviceJSON.carrier = await DeviceInfo.getCarrier();
       deviceJSON.totalMemory = await DeviceInfo.getTotalMemory();

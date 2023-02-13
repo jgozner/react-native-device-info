@@ -458,6 +458,13 @@ export const [getPhoneNumber, getPhoneNumberSync] = getSupportedPlatformInfoFunc
   defaultValue: 'unknown',
 });
 
+export const [isPhoneAccountEnabled, isPhoneAccountEnabledSync] = getSupportedPlatformInfoFunctions({
+  supportedPlatforms: ['android'],
+  getter: () => RNDeviceInfo.isPhoneAccountEnabled(),
+  syncGetter: () => RNDeviceInfo.isPhoneAccountEnabledSync(),
+  defaultValue: false
+});
+
 export const [getCarrier, getCarrierSync] = getSupportedPlatformInfoFunctions({
   supportedPlatforms: ['android', 'ios'],
   getter: () => RNDeviceInfo.getCarrier(),
@@ -952,6 +959,8 @@ const DeviceInfo: DeviceInfoModule = {
   hasSystemFeatureSync,
   isAirplaneMode,
   isAirplaneModeSync,
+  isPhoneAccountEnabled,
+  isPhoneAccountEnabledSync,
   isBatteryCharging,
   isBatteryChargingSync,
   isCameraPresent,

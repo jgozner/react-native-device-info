@@ -127,6 +127,8 @@ interface ExposedNativeMethods {
   hasHmsSync: () => boolean;
   hasSystemFeature: (feature: string) => Promise<boolean>;
   hasSystemFeatureSync: (feature: string) => boolean;
+  isPhoneAccountEnabled: () => Promise<boolean>;
+  isPhoneAccountEnabledSync: () => boolean;
   isAirplaneMode: () => Promise<boolean>;
   isAirplaneModeSync: () => boolean;
   isBatteryCharging: () => Promise<boolean>;

@@ -915,6 +915,20 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void getPhoneNumber(Promise p) { p.resolve(getPhoneNumberSync()); }
 
+  @SuppressLint({"HardwareIds", "MissingPermission"})
+  @ReactMethod(isBlockingSynchronousMethod = true)
+  public boolean isPhoneAccountEnabledSync(){
+    if(!(Build.VERSION.SDK_INT >= 23)){
+      return true;
+    }
+    TelecomManager telecomManager = (TelecomManager) getReactApplicationContext().getSystemService(Context.TELECOM_SERVICE);
+    PhoneAccount phoneAccount = telecomManager.getPhoneAccount(phoneAccountHandle);
+    return phoneAccount.isEnabled();
+  }
+
+  @ReactMethod 
+  public void isPhoneAccountEnabled(Promise p){p.resolve(isPhoneAccountEnabledSync())}
+
   @ReactMethod(isBlockingSynchronousMethod = true)
   public WritableArray getSupportedAbisSync() {
     WritableArray array = new WritableNativeArray();
