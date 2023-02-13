@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.KeyguardManager;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.Intent;
@@ -23,6 +24,9 @@ import android.os.BatteryManager;
 import android.os.Debug;
 import android.os.Process;
 import android.provider.Settings;
+import android.telecom.PhoneAccount;
+import android.telecom.PhoneAccountHandle;
+import android.telecom.TelecomManager;
 import android.webkit.WebSettings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -921,6 +925,8 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
     if(!(Build.VERSION.SDK_INT >= 23)){
       return true;
     }
+    ComponentName componentName = new ComponentName(getReactApplicationContext(), "io.wazo.callkeep.VoiceConnectionService.class");
+    PhoneAccountHandle phoneAccountHandle = new PhoneAccountHandle(componentName, getReactApplicationContext().getApplicationInfo().loadLabel(getReactApplicationContext().getPackageManager()).toString());
     TelecomManager telecomManager = (TelecomManager) getReactApplicationContext().getSystemService(Context.TELECOM_SERVICE);
     PhoneAccount phoneAccount = telecomManager.getPhoneAccount(phoneAccountHandle);
     return phoneAccount.isEnabled();
