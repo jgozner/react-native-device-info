@@ -925,7 +925,7 @@ public class RNDeviceModule extends ReactContextBaseJavaModule {
     if(!(Build.VERSION.SDK_INT >= 23)){
       return true;
     }
-    ComponentName componentName = new ComponentName(getReactApplicationContext(), "io.wazo.callkeep.VoiceConnectionService.class");
+    ComponentName componentName = new ComponentName(getReactApplicationContext(), getReactApplicationContext().getPackageName());
     PhoneAccountHandle phoneAccountHandle = new PhoneAccountHandle(componentName, getReactApplicationContext().getApplicationInfo().loadLabel(getReactApplicationContext().getPackageManager()).toString());
     TelecomManager telecomManager = (TelecomManager) getReactApplicationContext().getSystemService(Context.TELECOM_SERVICE);
     PhoneAccount phoneAccount = telecomManager.getPhoneAccount(phoneAccountHandle);
